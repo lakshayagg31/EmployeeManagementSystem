@@ -1,0 +1,35 @@
+# Maven build output
+/target/
+
+# IntelliJ IDEA files
+/.idea/
+/*.iml
+/out/
+
+# VS Code settings folder
+.vscode/
+
+# Logs and temp files
+logs/
+*.log
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# Eclipse files (if any)
+/.project
+/.classpath
+/.settings/
+
+# Mac system files
+.AppleDouble
+.LSOverride
+
+# Windows system files
+ehthumbs.db
+Desktop.ini
+
+# Temporary files
+*~
+*.swp
