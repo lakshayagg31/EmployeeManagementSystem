@@ -1,0 +1,9 @@
+C:\Other\JavaMicroservices\EmployeeManagementSystem\DepartmentService\src\main\java\com\company\departments\config\ApplicationConfig.java
+C:\Other\JavaMicroservices\EmployeeManagementSystem\DepartmentService\src\main\java\com\company\departments\controller\DepartmentController.java
+C:\Other\JavaMicroservices\EmployeeManagementSystem\DepartmentService\src\main\java\com\company\departments\DepartmentServiceApplication.java
+C:\Other\JavaMicroservices\EmployeeManagementSystem\DepartmentService\src\main\java\com\company\departments\dto\DepartmentDto.java
+C:\Other\JavaMicroservices\EmployeeManagementSystem\DepartmentService\src\main\java\com\company\departments\irepository\IDepartmentRepository.java
+C:\Other\JavaMicroservices\EmployeeManagementSystem\DepartmentService\src\main\java\com\company\departments\model\Department.java
+C:\Other\JavaMicroservices\EmployeeManagementSystem\DepartmentService\src\main\java\com\company\departments\repository\DepartmentRepositoryImpl.java
+C:\Other\JavaMicroservices\EmployeeManagementSystem\DepartmentService\src\main\java\com\company\departments\repository\DepartmentRowMapper.java
+C:\Other\JavaMicroservices\EmployeeManagementSystem\DepartmentService\src\main\java\com\company\departments\service\DepartmentService.java

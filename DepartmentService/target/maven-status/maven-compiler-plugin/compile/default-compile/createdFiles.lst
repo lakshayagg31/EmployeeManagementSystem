@@ -1,0 +1,9 @@
+com\company\departments\config\ApplicationConfig.class
+com\company\departments\model\Department.class
+com\company\departments\repository\DepartmentRowMapper.class
+com\company\departments\controller\DepartmentController.class
+com\company\departments\DepartmentServiceApplication.class
+com\company\departments\service\DepartmentService.class
+com\company\departments\dto\DepartmentDto.class
+com\company\departments\irepository\IDepartmentRepository.class
+com\company\departments\repository\DepartmentRepositoryImpl.class

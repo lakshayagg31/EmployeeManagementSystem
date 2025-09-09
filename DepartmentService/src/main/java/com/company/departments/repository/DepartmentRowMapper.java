@@ -14,7 +14,7 @@ public class DepartmentRowMapper implements RowMapper<Department> {
             return null;
         }
         int departmentId = rs.getInt("department_id");
-        String departmentName = rs.getString("name");
+        String departmentName = rs.getString("department_name");
         int headId = rs.getInt("head_id");
         return new Department(departmentId, departmentName, headId);
     }

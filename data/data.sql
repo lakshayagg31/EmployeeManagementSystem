@@ -1,0 +1,70 @@
+USE departmentdb;
+INSERT INTO department (department_name, head_id) VALUES
+('HR', NULL),
+('Finance', NULL),
+('Engineering', NULL),
+('Sales', NULL),
+('Marketing', NULL),
+('IT', NULL),
+('Operations', NULL),
+('Customer Service', NULL),
+('Research and Development', NULL),
+('Legal', NULL),
+('Quality Assurance', NULL),
+('Product Management', NULL),
+('Business Development', NULL),
+('Administration', NULL),
+('Training', NULL),
+('Procurement', NULL),
+('Security', NULL),
+('Maintenance', NULL),
+('Public Relations', NULL),
+('Compliance', NULL);
+
+
+USE employeedb;
+INSERT INTO employee (name, email, job_title, department_id) VALUES
+('John Smith', 'john.smith@company.com', 'HR Manager', 1),
+('Emily Johnson', 'emily.johnson@company.com', 'Finance Analyst', 2),
+('Michael Brown', 'michael.brown@company.com', 'Software Engineer', 3),
+('Sarah Davis', 'sarah.davis@company.com', 'Sales Executive', 4),
+('David Wilson', 'david.wilson@company.com', 'Marketing Specialist', 5),
+('Laura Garcia', 'laura.garcia@company.com', 'IT Support', 6),
+('James Martinez', 'james.martinez@company.com', 'Operations Manager', 7),
+('Patricia Rodriguez', 'patricia.rodriguez@company.com', 'Customer Service Rep', 8),
+('Robert Lee', 'robert.lee@company.com', 'Research Scientist', 9),
+('Barbara Allen', 'barbara.allen@company.com', 'Legal Advisor', 10),
+('William Hall', 'william.hall@company.com', 'QA Tester', 11),
+('Linda Walker', 'linda.walker@company.com', 'Product Manager', 12),
+('Christopher Young', 'christopher.young@company.com', 'Business Development Lead', 13),
+('Elizabeth Scott', 'elizabeth.scott@company.com', 'Admin Assistant', 14),
+('Matthew King', 'matthew.king@company.com', 'Training Coordinator', 15),
+('Jennifer Green', 'jennifer.green@company.com', 'Procurement Officer', 16),
+('Anthony Baker', 'anthony.baker@company.com', 'Security Specialist', 17),
+('Jessica Adams', 'jessica.adams@company.com', 'Maintenance Technician', 18),
+('Mark Nelson', 'mark.nelson@company.com', 'PR Manager', 19),
+('Susan Carter', 'susan.carter@company.com', 'Compliance Officer', 20);
+
+
+USE salarydb;
+INSERT INTO salary (employee_id, base_salary) VALUES
+(1, 75000.00),
+(2, 68000.00),
+(3, 90000.00),
+(4, 62000.00),
+(5, 70000.00),
+(6, 56000.00),
+(7, 80000.00),
+(8, 54000.00),
+(9, 95000.00),
+(10, 72000.00),
+(11, 60000.00),
+(12, 85000.00),
+(13, 78000.00),
+(14, 50000.00),
+(15, 52000.00),
+(16, 67000.00),
+(17, 59000.00),
+(18, 48000.00),
+(19, 73000.00),
+(20, 65000.00);

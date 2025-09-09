@@ -1,0 +1,9 @@
+com\company\salaries\config\ApplicationConfig.class
+com\company\salaries\controller\SalaryController.class
+com\company\salaries\model\Salary.class
+com\company\salaries\service\SalaryService.class
+com\company\salaries\repository\SalaryRepositoryImpl.class
+com\company\salaries\SalaryServiceApplication.class
+com\company\salaries\dto\SalaryDto.class
+com\company\salaries\irepository\ISalaryRepository.class
+com\company\salaries\repository\SalaryRowMapper.class

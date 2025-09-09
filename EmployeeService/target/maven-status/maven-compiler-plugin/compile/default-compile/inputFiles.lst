@@ -1,0 +1,12 @@
+C:\Other\JavaMicroservices\EmployeeManagementSystem\EmployeeService\src\main\java\com\company\employees\config\ApplicationConfig.java
+C:\Other\JavaMicroservices\EmployeeManagementSystem\EmployeeService\src\main\java\com\company\employees\controller\EmployeeController.java
+C:\Other\JavaMicroservices\EmployeeManagementSystem\EmployeeService\src\main\java\com\company\employees\dto\DepartmentDto.java
+C:\Other\JavaMicroservices\EmployeeManagementSystem\EmployeeService\src\main\java\com\company\employees\dto\EmployeeDetailsDto.java
+C:\Other\JavaMicroservices\EmployeeManagementSystem\EmployeeService\src\main\java\com\company\employees\dto\EmployeeDto.java
+C:\Other\JavaMicroservices\EmployeeManagementSystem\EmployeeService\src\main\java\com\company\employees\dto\SalaryDto.java
+C:\Other\JavaMicroservices\EmployeeManagementSystem\EmployeeService\src\main\java\com\company\employees\EmployeeServiceApplication.java
+C:\Other\JavaMicroservices\EmployeeManagementSystem\EmployeeService\src\main\java\com\company\employees\irepository\IEmployeeRepository.java
+C:\Other\JavaMicroservices\EmployeeManagementSystem\EmployeeService\src\main\java\com\company\employees\model\Employee.java
+C:\Other\JavaMicroservices\EmployeeManagementSystem\EmployeeService\src\main\java\com\company\employees\repository\EmployeeRepositoryImpl.java
+C:\Other\JavaMicroservices\EmployeeManagementSystem\EmployeeService\src\main\java\com\company\employees\repository\EmployeeRowMapper.java
+C:\Other\JavaMicroservices\EmployeeManagementSystem\EmployeeService\src\main\java\com\company\employees\service\EmployeeService.java

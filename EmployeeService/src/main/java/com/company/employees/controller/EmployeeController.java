@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.company.employees.dto.EmployeeDetailsDto;
 import com.company.employees.dto.EmployeeDto;
 import com.company.employees.service.EmployeeService;
 
@@ -31,9 +32,10 @@ public class EmployeeController {
         return _EmployeeService.GetAllEmployees();
     }
 
+    
     @GetMapping(path = "/employee/{employeeId}")
-    public EmployeeDto GetEmployeeById(@PathVariable("employeeId") int employeeId) {
-        return _EmployeeService.GetEmployeeById(employeeId);
+    public EmployeeDetailsDto GetEmployeeById(@PathVariable("employeeId") int employeeId) {
+        return _EmployeeService.GetEmployeeDetailsById(employeeId);
     }
 
     @GetMapping(path = "/employee")

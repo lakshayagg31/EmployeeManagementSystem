@@ -1,0 +1,9 @@
+C:\Other\JavaMicroservices\EmployeeManagementSystem\SalaryService\src\main\java\com\company\salaries\config\ApplicationConfig.java
+C:\Other\JavaMicroservices\EmployeeManagementSystem\SalaryService\src\main\java\com\company\salaries\controller\SalaryController.java
+C:\Other\JavaMicroservices\EmployeeManagementSystem\SalaryService\src\main\java\com\company\salaries\dto\SalaryDto.java
+C:\Other\JavaMicroservices\EmployeeManagementSystem\SalaryService\src\main\java\com\company\salaries\irepository\ISalaryRepository.java
+C:\Other\JavaMicroservices\EmployeeManagementSystem\SalaryService\src\main\java\com\company\salaries\model\Salary.java
+C:\Other\JavaMicroservices\EmployeeManagementSystem\SalaryService\src\main\java\com\company\salaries\repository\SalaryRepositoryImpl.java
+C:\Other\JavaMicroservices\EmployeeManagementSystem\SalaryService\src\main\java\com\company\salaries\repository\SalaryRowMapper.java
+C:\Other\JavaMicroservices\EmployeeManagementSystem\SalaryService\src\main\java\com\company\salaries\SalaryServiceApplication.java
+C:\Other\JavaMicroservices\EmployeeManagementSystem\SalaryService\src\main\java\com\company\salaries\service\SalaryService.java
