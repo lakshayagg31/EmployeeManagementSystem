@@ -44,9 +44,10 @@ public class EmployeeController {
     }
 
     @PostMapping("/employee")
-    public EmployeeDto AddEmployee(@RequestBody EmployeeDto employee) {
-        return _EmployeeService.AddEmployee(employee);
+    public EmployeeDto AddEmployee(@RequestBody EmployeeDto employeeDto) {
+        return _EmployeeService.AddEmployee(employeeDto);
     }
+
 
     @DeleteMapping("/employee/{email}")
     public void DeleteEmployeeByEmail(@PathVariable("email") String email) {

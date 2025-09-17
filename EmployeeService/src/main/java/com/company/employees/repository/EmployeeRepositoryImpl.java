@@ -55,19 +55,23 @@ public class EmployeeRepositoryImpl implements IEmployeeRepository {
     @Override
     public Employee AddEmployee(Employee employee) {
         try {
+            String sql = "INSERT INTO employee (name, email, job_title, department_id) VALUES (?, ?, ?, ?)";
             _JdbcTemplate.update(
-                "INSERT INTO employee (name, email, job_title, department_id) VALUES (?, ?, ?, ?)",
-                employee.get_Name().toLowerCase(),
-                employee.get_Email().toLowerCase(),
-                employee.get_JobTitle(),
-                employee.get_DepartmentId()
+                sql,
+                employee.getName().toLowerCase(),  // Assuming case-insensitive.
+                employee.getEmail().toLowerCase(),
+                employee.getJobTitle(),
+                employee.getDepartmentId()
             );
-            return employee;
+            // After insert, fetch saved employee by email (unique)
+            String selectSql = "SELECT * FROM employee WHERE email = ?";
+            return _JdbcTemplate.queryForObject(selectSql, new EmployeeRowMapper(), employee.getEmail().toLowerCase());
         } catch (Exception e) {
             System.out.println("Error adding employee: " + e.getMessage());
-            return null;
+            throw e;  // Propagate for logging and visibility
         }
     }
+
 
     @Override
     public Integer GetEmployeeCount() {

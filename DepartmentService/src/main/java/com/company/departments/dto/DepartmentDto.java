@@ -4,45 +4,28 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 
 public class DepartmentDto {
     @JsonProperty("departmentid")
-    int _DepartmentId;
+    private Integer departmentId;    // Allow null
+
     @JsonProperty("departmentname")
-    String _DepartmentName;
+    private String departmentName;
+
     @JsonProperty("headid")
-    int _HeadId;
+    private Integer headId;          // Allow null
 
-    public DepartmentDto() {
-        // Default constructor
+    public DepartmentDto() {}
+
+    public DepartmentDto(Integer departmentId, String departmentName, Integer headId) {
+        this.departmentId = departmentId;
+        this.departmentName = departmentName;
+        this.headId = headId;
     }
 
-    public DepartmentDto(int departmentId, String departmentName, int headId) {
-        this._DepartmentId = departmentId;
-        this._DepartmentName = departmentName;
-        this._HeadId = headId;
-    }
+    public Integer getDepartmentId() { return departmentId; }
+    public void setDepartmentId(Integer departmentId) { this.departmentId = departmentId; }
 
-    // getters and setters
+    public String getDepartmentName() { return departmentName; }
+    public void setDepartmentName(String departmentName) { this.departmentName = departmentName; }
 
-    public int get_DepartmentId() {
-        return _DepartmentId;
-    }
-
-    public void set_DepartmentId(int departmentId) {
-        this._DepartmentId = departmentId;
-    }
-
-    public String get_DepartmentName() {
-        return _DepartmentName;
-    }
-
-    public void set_DepartmentName(String departmentName) {
-        this._DepartmentName = departmentName;
-    }
-
-    public int get_HeadId() {
-        return _HeadId;
-    }
-
-    public void set_HeadId(int headId) {
-        this._HeadId = headId;
-    }
+    public Integer getHeadId() { return headId; }
+    public void setHeadId(Integer headId) { this.headId = headId; }
 }

@@ -1,73 +1,49 @@
 package com.company.employees.dto;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
+
 import jakarta.validation.constraints.Email;
 
 public class EmployeeDto {
     @JsonProperty("employeeid")
-    int _EmployeeId;
+    private Integer employeeId;  // Integer for nullable, assigned by DB
 
     @JsonProperty("name")
-    String _Name;
+    private String name;
 
     @JsonProperty("email")
     @Email(message = "Please provide a valid email address")
-    String _Email;
+    private String email;
 
     @JsonProperty("jobtitle")
-    String _JobTitle;
+    private String jobTitle;
 
     @JsonProperty("departmentid")
-    int _DepartmentId;
+    private Integer departmentId;
 
     public EmployeeDto() {}
 
-    public EmployeeDto(int employeeId, String name, String email, String jobTitle, int departmentId) {
-        this._EmployeeId = employeeId;
-        this._Name = name;
-        this._Email = email;
-        this._JobTitle = jobTitle;
-        this._DepartmentId = departmentId;
+    public EmployeeDto(Integer employeeId, String name, String email, String jobTitle, Integer departmentId) {
+        this.employeeId = employeeId;
+        this.name = name;
+        this.email = email;
+        this.jobTitle = jobTitle;
+        this.departmentId = departmentId;
     }
 
     // getters and setters
-    public int get_EmployeeId() {
-        return _EmployeeId;
-    }
+    public Integer getEmployeeId() { return employeeId; }
+    public void setEmployeeId(Integer employeeId) { this.employeeId = employeeId; }
 
-    public void set_EmployeeId(int employeeId) {
-        this._EmployeeId = employeeId;
-    }
+    public String getName() { return name; }
+    public void setName(String name) { this.name = name; }
 
-    public String get_Name() {
-        return _Name;
-    }
+    public String getEmail() { return email; }
+    public void setEmail(String email) { this.email = email; }
 
-    public void set_Name(String name) {
-        this._Name = name;
-    }
+    public String getJobTitle() { return jobTitle; }
+    public void setJobTitle(String jobTitle) { this.jobTitle = jobTitle; }
 
-    public String get_Email() {
-        return _Email;
-    }
-
-    public void set_Email(String email) {
-        this._Email = email;
-    }
-
-    public String get_JobTitle() {
-        return _JobTitle;
-    }
-
-    public void set_JobTitle(String jobTitle) {
-        this._JobTitle = jobTitle;
-    }
-
-    public int get_DepartmentId() {
-        return _DepartmentId;
-    }
-
-    public void set_DepartmentId(int departmentId) {
-        this._DepartmentId = departmentId;
-    }
+    public Integer getDepartmentId() { return departmentId; }
+    public void setDepartmentId(Integer departmentId) { this.departmentId = departmentId; }
 }

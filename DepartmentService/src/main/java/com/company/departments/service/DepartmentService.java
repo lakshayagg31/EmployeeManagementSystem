@@ -54,8 +54,14 @@ public class DepartmentService {
     }
 
     public DepartmentDto AddDepartment(DepartmentDto departmentDto) {
+    try {
         Department department = _ModelMapper.map(departmentDto, Department.class);
-        _DepartmentRepository.AddDepartment(department);
-        return departmentDto;
+        Department savedDept = _DepartmentRepository.AddDepartment(department);
+        return _ModelMapper.map(savedDept, DepartmentDto.class);
+    } catch (org.springframework.dao.DataIntegrityViolationException e) {
+        throw new RuntimeException("Wrong employee id: No such employee exists. Please try again with a correct id. No data has been added in the database.");
     }
+}
+
+
 }

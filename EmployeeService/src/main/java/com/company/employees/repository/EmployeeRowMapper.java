@@ -14,11 +14,11 @@ public class EmployeeRowMapper implements RowMapper<Employee> {
             return null;
         }
         Employee employee = new Employee();
-        employee.set_EmployeeId(rs.getInt("employee_id"));
-        employee.set_Name(rs.getString("name"));
-        employee.set_Email(rs.getString("email"));
-        employee.set_JobTitle(rs.getString("job_title"));
-        employee.set_DepartmentId(rs.getInt("department_id"));
+        employee.setEmployeeId(rs.getInt("employee_id"));
+        employee.setName(rs.getString("name"));
+        employee.setEmail(rs.getString("email"));
+        employee.setJobTitle(rs.getString("job_title"));
+        employee.setDepartmentId(rs.getInt("department_id"));
         return employee;
     }
 }

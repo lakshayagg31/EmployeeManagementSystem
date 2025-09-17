@@ -48,7 +48,7 @@ public class EmployeeService {
 
         try {
             DepartmentDto departmentDto = _DepartmentRestClient.get()
-                .uri("/department/{departmentId}", employee.get_DepartmentId())
+                .uri("/department/{departmentId}", employee.getDepartmentId())
                 .retrieve()
                 .body(DepartmentDto.class);
             if (departmentDto != null) {
@@ -77,11 +77,11 @@ public class EmployeeService {
         }
 
         return new EmployeeDetailsDto(
-            employee.get_EmployeeId(),
-            employee.get_Name(),
-            employee.get_Email(),
-            employee.get_JobTitle(),
-            employee.get_DepartmentId(),
+            employee.getEmployeeId(),
+            employee.getName(),
+            employee.getEmail(),
+            employee.getJobTitle(),
+            employee.getDepartmentId(),
             departmentName,
             baseSalary
         );
@@ -106,9 +106,10 @@ public class EmployeeService {
 
     public EmployeeDto AddEmployee(EmployeeDto employeeDto) {
         Employee employee = _ModelMapper.map(employeeDto, Employee.class);
-        _EmployeeRepository.AddEmployee(employee);
-        return employeeDto;
+        Employee savedEmployee = _EmployeeRepository.AddEmployee(employee);
+        return _ModelMapper.map(savedEmployee, EmployeeDto.class);
     }
+
 
     public void DeleteEmployeeByEmail(String email) {
         _EmployeeRepository.DeleteEmployeeByEmail(email);
