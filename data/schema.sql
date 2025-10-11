@@ -30,4 +30,9 @@ CREATE TABLE IF NOT EXISTS salary (
     FOREIGN KEY (employee_id) REFERENCES employeedb.employee(employee_id)
 );
 
-
+use userdb;
+create table if not exists users (
+    ->  u_name varchar(50) not null,
+    ->     u_email varchar(50) not null unique,
+    ->     u_password varchar(256) not null
+    -> );
