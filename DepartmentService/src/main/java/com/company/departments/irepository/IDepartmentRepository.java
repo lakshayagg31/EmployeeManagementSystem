@@ -12,4 +12,7 @@ public interface IDepartmentRepository {
     Integer GetDepartmentCount();
     String GetDepartmentNameById(int departmentId);
     Integer GetDepartmentIdByName(String departmentName);
+    List<Department> GetDepartmentsPaginated(int page, int size);
+    List<Department> GetDepartmentsRange(int start, int end);
+
 }

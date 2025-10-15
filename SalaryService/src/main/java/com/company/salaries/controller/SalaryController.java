@@ -1,8 +1,10 @@
 package com.company.salaries.controller;
 
 import java.util.List;
+import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -10,6 +12,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.company.salaries.dto.SalaryDto;
@@ -50,4 +53,23 @@ public class SalaryController {
     public void DeleteSalary(@PathVariable("employeeId") int employeeId) {
         _SalaryService.DeleteSalaryByEmployeeId(employeeId);
     }
+
+    @GetMapping("/nextpage")
+    public ResponseEntity<?> getSalariesPaginated(
+        @RequestParam(defaultValue = "0") int page,
+        @RequestParam(required = false, defaultValue = "0") int size
+    ) {
+        Map<String, Object> data = _SalaryService.GetSalariesPaginated(page, size);
+        return ResponseEntity.ok(data);
+    }
+
+    @GetMapping("/nextpage/range")
+    public ResponseEntity<?> getSalariesRange(
+        @RequestParam int start,
+        @RequestParam int end
+    ) {
+        Map<String, Object> data = _SalaryService.GetSalariesRange(start, end);
+        return ResponseEntity.ok(data);
+    }
+
 }

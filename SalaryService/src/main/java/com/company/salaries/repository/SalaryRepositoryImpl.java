@@ -1,12 +1,14 @@
 package com.company.salaries.repository;
 
-import com.company.salaries.irepository.ISalaryRepository;
-import com.company.salaries.model.Salary;
 import java.util.ArrayList;
 import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Repository;
+
+import com.company.salaries.irepository.ISalaryRepository;
+import com.company.salaries.model.Salary;
 
 @Repository(value = "SalaryRepositoryImpl")
 public class SalaryRepositoryImpl implements ISalaryRepository {
@@ -75,4 +77,37 @@ public class SalaryRepositoryImpl implements ISalaryRepository {
             System.out.println("Error deleting salary: " + e.getMessage());
         }
     }
+
+    public List<Salary> GetSalariesPaginated(int page, int size) {
+        int offset = page * size;
+        String sql = "SELECT * FROM salary LIMIT ? OFFSET ?";
+        try {
+            return _JdbcTemplate.query(sql, new SalaryRowMapper(), size, offset);
+        } catch (Exception e) {
+            System.out.println("Error fetching paginated salaries: " + e.getMessage());
+            return new ArrayList<>();
+        }
+    }
+
+    public List<Salary> GetSalariesRange(int start, int end) {
+        int count = end - start + 1;
+        String sql = "SELECT * FROM salary LIMIT ? OFFSET ?";
+        try {
+            return _JdbcTemplate.query(sql, new SalaryRowMapper(), count, start);
+        } catch (Exception e) {
+            System.out.println("Error fetching range salaries: " + e.getMessage());
+            return new ArrayList<>();
+        }
+    }
+
+    public Integer GetSalaryCount() {
+        try {
+            String sql = "SELECT COUNT(*) FROM salary";
+            return _JdbcTemplate.queryForObject(sql, Integer.class);
+        } catch (Exception e) {
+            System.out.println("Error fetching salary count: " + e.getMessage());
+            return 0;
+        }
+    }
+
 }

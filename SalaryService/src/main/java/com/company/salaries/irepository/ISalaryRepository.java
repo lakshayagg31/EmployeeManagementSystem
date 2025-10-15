@@ -10,4 +10,7 @@ public interface ISalaryRepository {
     Salary AddSalary(Salary salary);
     Salary UpdateSalary(int employeeId, Salary salary);
     void DeleteSalaryByEmployeeId(int employeeId);
-}
+    List<Salary> GetSalariesPaginated(int page, int size);
+    List<Salary> GetSalariesRange(int start, int end);
+    Integer GetSalaryCount();
+    }

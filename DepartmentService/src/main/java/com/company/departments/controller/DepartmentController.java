@@ -1,6 +1,7 @@
 package com.company.departments.controller;
 
 import java.util.List;
+import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
@@ -61,6 +62,23 @@ public class DepartmentController {
         }
     }
 
+    @GetMapping("/nextpage")
+    public ResponseEntity<?> getDepartmentsPaginated(
+        @RequestParam(defaultValue = "0") int page,
+        @RequestParam(required = false, defaultValue = "0") int size
+    ) {
+        Map<String, Object> data = _DepartmentService.GetDepartmentsPaginated(page, size);
+        return ResponseEntity.ok(data);
+    }
+
+    @GetMapping("/nextpage/range")
+    public ResponseEntity<?> getDepartmentsRange(
+        @RequestParam int start,
+        @RequestParam int end
+    ) {
+        Map<String, Object> data = _DepartmentService.GetDepartmentsRange(start, end);
+        return ResponseEntity.ok(data);
+    }
 
 
 }

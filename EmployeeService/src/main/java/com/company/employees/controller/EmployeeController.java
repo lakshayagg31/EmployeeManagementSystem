@@ -1,8 +1,10 @@
 package com.company.employees.controller;
 
 import java.util.List;
+import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -53,4 +55,23 @@ public class EmployeeController {
     public void DeleteEmployeeByEmail(@PathVariable("email") String email) {
         _EmployeeService.DeleteEmployeeByEmail(email);
     }
+
+    @GetMapping("/nextpage")
+    public ResponseEntity<?> getEmployeesPaginated(
+        @RequestParam(defaultValue = "0") int page,
+        @RequestParam(required = false, defaultValue = "0") int size
+    ) {
+        Map<String, Object> data = _EmployeeService.GetEmployeesPaginated(page, size);
+        return ResponseEntity.ok(data);
+    }
+
+    @GetMapping("/nextpage/range")
+    public ResponseEntity<?> getEmployeesRange(
+        @RequestParam int start,
+        @RequestParam int end
+    ) {
+        Map<String, Object> data = _EmployeeService.GetEmployeesRange(start, end);
+        return ResponseEntity.ok(data);
+    }
+
 }

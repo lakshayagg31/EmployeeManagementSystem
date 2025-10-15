@@ -102,4 +102,27 @@ public class DepartmentRepositoryImpl implements IDepartmentRepository {
             return 0;
         }
     }
+
+    public List<Department> GetDepartmentsPaginated(int page, int size) {
+        int offset = page * size;
+        String sql = "SELECT * FROM department LIMIT ? OFFSET ?";
+        try {
+            return _JdbcTemplate.query(sql, new DepartmentRowMapper(), size, offset);
+        } catch (Exception e) {
+            System.out.println("Error fetching paginated departments: " + e.getMessage());
+            return new ArrayList<>();
+        }
+    }
+
+    public List<Department> GetDepartmentsRange(int start, int end) {
+        int count = end - start + 1;
+        String sql = "SELECT * FROM department LIMIT ? OFFSET ?";
+        try {
+            return _JdbcTemplate.query(sql, new DepartmentRowMapper(), count, start);
+        } catch (Exception e) {
+            System.out.println("Error fetching range departments: " + e.getMessage());
+            return new ArrayList<>();
+        }
+    }
+
 }

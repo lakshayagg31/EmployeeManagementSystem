@@ -1,10 +1,13 @@
 package com.company.employees.service;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.beans.factory.config.BeanDefinition;
 import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Service;
@@ -20,6 +23,9 @@ import com.company.employees.model.Employee;
 @Service(value = "EmployeeService")
 @Scope(value = BeanDefinition.SCOPE_SINGLETON)
 public class EmployeeService {
+    @Value("${com.company.pagination.size:10}")
+    private int defaultPageSize;
+
     IEmployeeRepository _EmployeeRepository;
     ModelMapper _ModelMapper;
     final RestClient _DepartmentRestClient;
@@ -114,4 +120,42 @@ public class EmployeeService {
     public void DeleteEmployeeByEmail(String email) {
         _EmployeeRepository.DeleteEmployeeByEmail(email);
     }
+
+    public Map<String, Object> GetEmployeesPaginated(int page, int size) {
+        int totalElements = _EmployeeRepository.GetEmployeeCount();
+        int pageSize = (size > 0) ? size : defaultPageSize;
+        int totalPages = (int) Math.ceil((double) totalElements / pageSize);
+
+        List<Employee> employees = _EmployeeRepository.GetEmployeesPaginated(page, pageSize);
+        List<EmployeeDto> dtos = new ArrayList<>();
+        for (Employee emp : employees) {
+            dtos.add(_ModelMapper.map(emp, EmployeeDto.class));
+        }
+
+        Map<String, Object> response = new HashMap<>();
+        response.put("page", page);
+        response.put("size", pageSize);
+        response.put("totalPages", totalPages);
+        response.put("totalElements", totalElements);
+        response.put("employees", dtos);
+        return response;
+    }
+
+    public Map<String, Object> GetEmployeesRange(int start, int end) {
+        int totalElements = _EmployeeRepository.GetEmployeeCount();
+        List<Employee> employees = _EmployeeRepository.GetEmployeesRange(start, end);
+
+        List<EmployeeDto> dtos = new ArrayList<>();
+        for (Employee emp : employees) {
+            dtos.add(_ModelMapper.map(emp, EmployeeDto.class));
+        }
+
+        Map<String, Object> response = new HashMap<>();
+        response.put("start", start);
+        response.put("end", end);
+        response.put("totalElements", totalElements);
+        response.put("employees", dtos);
+        return response;
+    }
+
 }

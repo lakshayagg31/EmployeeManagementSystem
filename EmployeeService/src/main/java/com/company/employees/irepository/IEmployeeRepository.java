@@ -11,4 +11,7 @@ public interface IEmployeeRepository {
     Employee AddEmployee(Employee employee);
     Integer GetEmployeeCount();
     void DeleteEmployeeByEmail(String email);
+    List<Employee> GetEmployeesPaginated(int page, int size);
+    List<Employee> GetEmployeesRange(int start, int end);
+
 }

@@ -1,10 +1,13 @@
 package com.company.departments.service;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
 
 import com.company.departments.dto.DepartmentDto;
@@ -13,6 +16,9 @@ import com.company.departments.model.Department;
 
 @Service(value = "DepartmentService")
 public class DepartmentService {
+    @Value("${com.company.pagination.size:10}")
+    private int defaultPageSize;
+
     IDepartmentRepository _DepartmentRepository;
     ModelMapper _ModelMapper;
 
@@ -62,6 +68,42 @@ public class DepartmentService {
         throw new RuntimeException("Wrong employee id: No such employee exists. Please try again with a correct id. No data has been added in the database.");
     }
 }
+    public Map<String, Object> GetDepartmentsPaginated(int page, int size) {
+        int totalElements = _DepartmentRepository.GetDepartmentCount();
+        int pageSize = (size > 0) ? size : defaultPageSize;
+        int totalPages = (int) Math.ceil((double) totalElements / pageSize);
+
+        List<Department> departments = _DepartmentRepository.GetDepartmentsPaginated(page, pageSize);
+        List<DepartmentDto> dtos = new ArrayList<>();
+        for (Department dep : departments) {
+            dtos.add(_ModelMapper.map(dep, DepartmentDto.class));
+        }
+
+        Map<String, Object> response = new HashMap<>();
+        response.put("page", page);
+        response.put("size", pageSize);
+        response.put("totalPages", totalPages);
+        response.put("totalElements", totalElements);
+        response.put("departments", dtos);
+        return response;
+    }
+
+    public Map<String, Object> GetDepartmentsRange(int start, int end) {
+        int totalElements = _DepartmentRepository.GetDepartmentCount();
+
+        List<Department> departments = _DepartmentRepository.GetDepartmentsRange(start, end);
+        List<DepartmentDto> dtos = new ArrayList<>();
+        for (Department dep : departments) {
+            dtos.add(_ModelMapper.map(dep, DepartmentDto.class));
+        }
+
+        Map<String, Object> response = new HashMap<>();
+        response.put("start", start);
+        response.put("end", end);
+        response.put("totalElements", totalElements);
+        response.put("departments", dtos);
+        return response;
+    }
 
 
 }

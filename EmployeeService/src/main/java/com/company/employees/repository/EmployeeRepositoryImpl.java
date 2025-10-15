@@ -93,4 +93,27 @@ public class EmployeeRepositoryImpl implements IEmployeeRepository {
             System.out.println("Error deleting employee: " + e.getMessage());
         }
     }
+
+    public List<Employee> GetEmployeesPaginated(int page, int size) {
+        int offset = page * size;
+        String sql = "SELECT * FROM employee LIMIT ? OFFSET ?";
+        try {
+            return _JdbcTemplate.query(sql, new EmployeeRowMapper(), size, offset);
+        } catch (Exception e) {
+            System.out.println("Error fetching paginated employees: " + e.getMessage());
+            return new ArrayList<>();
+        }
+    }
+
+    public List<Employee> GetEmployeesRange(int start, int end) {
+        int count = end - start + 1;
+        String sql = "SELECT * FROM employee LIMIT ? OFFSET ?";
+        try {
+            return _JdbcTemplate.query(sql, new EmployeeRowMapper(), count, start);
+        } catch (Exception e) {
+            System.out.println("Error fetching employee range: " + e.getMessage());
+            return new ArrayList<>();
+        }
+    }
+
 }
