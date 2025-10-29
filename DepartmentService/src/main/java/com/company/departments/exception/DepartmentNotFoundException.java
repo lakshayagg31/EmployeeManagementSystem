@@ -1,0 +1,7 @@
+package com.company.departments.exception;
+
+public class DepartmentNotFoundException extends RuntimeException {
+    public DepartmentNotFoundException(String message) {
+        super(message);
+    }
+}

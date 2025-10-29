@@ -1,19 +1,19 @@
 package com.company.salaries.repository;
 
-import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Repository;
 
+import com.company.salaries.exception.DatabaseException;
 import com.company.salaries.irepository.ISalaryRepository;
 import com.company.salaries.model.Salary;
 
 @Repository(value = "SalaryRepositoryImpl")
 public class SalaryRepositoryImpl implements ISalaryRepository {
 
-    JdbcTemplate _JdbcTemplate;
+    private final JdbcTemplate _JdbcTemplate;
 
     @Autowired
     public SalaryRepositoryImpl(JdbcTemplate jdbcTemplate) {
@@ -22,14 +22,11 @@ public class SalaryRepositoryImpl implements ISalaryRepository {
 
     @Override
     public List<Salary> GetAllSalaries() {
-        List<Salary> salaries;
         try {
-            salaries = _JdbcTemplate.query("select * from salary", new SalaryRowMapper());
+            return _JdbcTemplate.query("select * from salary", new SalaryRowMapper());
         } catch (Exception e) {
-            System.out.println("Error fetching salaries: " + e.getMessage());
-            salaries = new ArrayList<>();
+            throw new DatabaseException("Error fetching salaries: " + e.getMessage());
         }
-        return salaries;
     }
 
     @Override
@@ -39,8 +36,7 @@ public class SalaryRepositoryImpl implements ISalaryRepository {
                 "select * from salary where employee_id = ?",
                 new SalaryRowMapper(), employeeId);
         } catch (Exception e) {
-            System.out.println("Error fetching salary by employee ID: " + e.getMessage());
-            return null;
+            throw new DatabaseException("Error fetching salary by employee ID: " + e.getMessage());
         }
     }
 
@@ -51,8 +47,7 @@ public class SalaryRepositoryImpl implements ISalaryRepository {
             _JdbcTemplate.update(sql, salary.get_EmployeeId(), salary.get_BaseSalary());
             return salary;
         } catch (Exception e) {
-            System.out.println("Error adding salary: " + e.getMessage());
-            return null;
+            throw new DatabaseException("Error adding salary: " + e.getMessage());
         }
     }
 
@@ -63,8 +58,7 @@ public class SalaryRepositoryImpl implements ISalaryRepository {
             _JdbcTemplate.update(sql, salary.get_BaseSalary(), employeeId);
             return salary;
         } catch (Exception e) {
-            System.out.println("Error updating salary: " + e.getMessage());
-            return null;
+            throw new DatabaseException("Error updating salary: " + e.getMessage());
         }
     }
 
@@ -74,40 +68,39 @@ public class SalaryRepositoryImpl implements ISalaryRepository {
             String sql = "DELETE FROM salary WHERE employee_id = ?";
             _JdbcTemplate.update(sql, employeeId);
         } catch (Exception e) {
-            System.out.println("Error deleting salary: " + e.getMessage());
+            throw new DatabaseException("Error deleting salary: " + e.getMessage());
         }
     }
 
+    @Override
     public List<Salary> GetSalariesPaginated(int page, int size) {
-        int offset = page * size;
-        String sql = "SELECT * FROM salary LIMIT ? OFFSET ?";
         try {
+            int offset = page * size;
+            String sql = "SELECT * FROM salary LIMIT ? OFFSET ?";
             return _JdbcTemplate.query(sql, new SalaryRowMapper(), size, offset);
         } catch (Exception e) {
-            System.out.println("Error fetching paginated salaries: " + e.getMessage());
-            return new ArrayList<>();
+            throw new DatabaseException("Error fetching paginated salaries: " + e.getMessage());
         }
     }
 
+    @Override
     public List<Salary> GetSalariesRange(int start, int end) {
-        int count = end - start + 1;
-        String sql = "SELECT * FROM salary LIMIT ? OFFSET ?";
         try {
+            int count = end - start + 1;
+            String sql = "SELECT * FROM salary LIMIT ? OFFSET ?";
             return _JdbcTemplate.query(sql, new SalaryRowMapper(), count, start);
         } catch (Exception e) {
-            System.out.println("Error fetching range salaries: " + e.getMessage());
-            return new ArrayList<>();
+            throw new DatabaseException("Error fetching salary range: " + e.getMessage());
         }
     }
 
+    @Override
     public Integer GetSalaryCount() {
         try {
             String sql = "SELECT COUNT(*) FROM salary";
             return _JdbcTemplate.queryForObject(sql, Integer.class);
         } catch (Exception e) {
-            System.out.println("Error fetching salary count: " + e.getMessage());
-            return 0;
+            throw new DatabaseException("Error fetching salary count: " + e.getMessage());
         }
     }
-
 }

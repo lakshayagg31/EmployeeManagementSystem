@@ -76,10 +76,13 @@ public class AuthGlobalFilter implements GlobalFilter, Ordered
 
 
         return responseMono.flatMap(response -> {
+            System.out.println("AuthService returned status: " + response.getStatusCode());
             if (response.getStatusCode().is2xxSuccessful()) 
             {
                 Route route = exchange.getAttribute(ServerWebExchangeUtils.GATEWAY_ROUTE_ATTR);
                 String routeId = (route != null) ? route.getId() : "default";
+                System.out.println("Route ID: " + routeId + " Auth header: " + _AuthFactory.BuildAuthHeader(routeId));
+
 
                 ServerHttpRequest mutatedRequest = exchange.getRequest()
                 .mutate()
