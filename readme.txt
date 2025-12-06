@@ -8,7 +8,7 @@ scalable and maintainable enterprise solution.
 
 Team Members:
 - Lakshay Aggarwal 22CSU272
-- Ribhav Bhalla 22CSU261
+
 
 -----------------------------------
 Working Services and Functionality
@@ -43,7 +43,7 @@ PORT numbers:-
 
 
 - Employee Service:
-    - Coded by: Lakshay Aggarwal 22CSU272
+
     - Major endpoints:
         - GET    /employees/
         - POST   /employees/employee
@@ -52,7 +52,7 @@ PORT numbers:-
         - DELETE /employees/employee/{email}
 
 - Department Service:
-    - Coded by: Lakshay Aggarwal 22CSU272
+
     - Major endpoints:
         - GET    /departments/
         - POST   /departments/department
@@ -60,7 +60,7 @@ PORT numbers:-
         - GET    /departments/department?departmentname={name}
 
 - Salary Service:
-    - Coded by: Ribhav Bhalla 22CSU261
+
     - Major endpoints:
         - GET    /salaries/
         - POST   /salaries/salary
@@ -68,18 +68,18 @@ PORT numbers:-
         - DELETE /salaries/salary/{employeeId}
 
 - Auth Service (for authentication):
-    - Coded by: Lakshay Aggarwal 22CSU272
+
     - Endpoints:
         - POST   /auth/signup
         - POST   /auth/authenticate
 
 - Common Code (API Gateway, Service Discovery, Config Server):
     API Gateway
-        - Coded by: Lakshay Aggarwal 22CSU272
+
     Service Discovery 
-        - Coded by: Ribhav Bhalla 22CSU261
+
     Config Server
-        - Coded by: Lakshay Aggarwal 22CSU272 & Ribhav Bhalla 22CSU261
+
 
 
 --------------------------------------------------------
